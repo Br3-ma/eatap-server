@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HandshakeController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,9 @@ Route::post('/signup/request-otp', [AuthController::class, 'requestOtp']);
 Route::post('/signup/verify-otp', [AuthController::class, 'verifyOtp']);
 Route::post('/signup/user-info', [AuthController::class, 'userInfo']);
 Route::post('/connectx', [HandshakeController::class, 'connect']);
+
+Route::get('/products', [ProductController::class, 'products']);
+
 
 // Protected route to retrieve user information after successful authentication
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
