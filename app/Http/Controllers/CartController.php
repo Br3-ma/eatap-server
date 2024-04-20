@@ -6,8 +6,29 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    public function add(){
+    public function add(Request $req){
+        try {
+            $cart = Cart::create([
+                'user_id' => $req->input('name'),
+                'picker_id' => $req->input('name'),
+                'type' => $req->input('name'),
+                'status' => $req->input('name'),
+                'state' => $req->input('name'),
+                'service_total' => $req->input('name'),
+                'total' => $req->input('name')
+            ]);
 
+            foreach ($req->input('name') as $key => $value) {
+                CartItem::create([
+                    'cart_id' => $req->input('name'),
+                    'product_id' => $req->input('name'),
+                    'qty' => $req->input('name'),
+                ]);
+            }
+            return response()->json(['data' => $cart], 200);
+        } catch (\Throwable $th) {
+            return response()->json(['data' => $th->getMessage()], 500);
+        }
     }
 
     public function remove(){

@@ -27,6 +27,7 @@ Route::post('/signup/user-info', [AuthController::class, 'userInfo']);
 Route::post('/connectx', [HandshakeController::class, 'connect']);
 
 Route::get('/products', [ProductController::class, 'products']);
+Route::get('/buy-to-cart', [CartController::class, 'add']);
 
 
 // Protected route to retrieve user information after successful authentication
